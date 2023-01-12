@@ -1,0 +1,68 @@
+.App {
+    max-width: 1400px;
+    margin: 40px auto;
+}
+
+button {
+    background: none;
+    border: 2px solid whitesmoke;
+    padding: 6px 12px;
+    border-radius: 5px;
+    color: whitesmoke;
+    cursor: pointer;
+    font-size: 1em;
+}
+
+button:hover {
+    background: red;
+    color: whitesmoke;
+}
+
+.card-grid {
+    margin-top: 40px;
+    display: grid;
+    /* grid-auto-rows: 400px;
+    grid-auto-columns: 2000px; */
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-gap: 20px;
+}
+
+
+
+.card {
+    position: relative;
+}
+
+.card img {
+    width:100%;
+    display: block;
+    border: 2px solid whitesmoke;
+    border-radius: 2px
+}
+
+/* img {
+    width: 300px;
+    height:300px
+}
+
+.front {
+    width: 300px;
+    height:200px
+} */
+
+.card .front {
+    transform: rotateY(90deg);
+    transition: all ease-in-out 0.1s;
+    position:absolute;
+}
+
+.flipped .front {
+    transform: rotateY(0deg);
+    margin-top: 30px;
+    margin-left: 10px;
+    width: 150px;
+    height:125px
+}
+/* .flipped .back {
+    transform: rotateY(0deg);
+} */
