@@ -2,6 +2,7 @@ body{
     margin: 0;
     font-size: 1.5em;
     text-align: center;
-    background: blue;
+    /* background: orange; */
+    background-image: url('../566522.jpg');
     color: azure;
 }

@@ -1,8 +1,9 @@
 import React, { Component, useEffect, useState } from 'react';
 import ReactDOM from "react-dom";
-import SingleCard from './SingleCard';
+import SingleCard from './SingleCard.jsx';
 import '/components/App.css'
-import '/components/SingleCard.js'
+import axios from "axios"
+import '/components/SingleCard.jsx'
 
 const cardImages = [
     {"src": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png", matched: false},
@@ -11,8 +12,8 @@ const cardImages = [
     {"src": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10.png", matched: false},
     {"src": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/13.png", matched: false},
     {"src": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/16.png", matched: false},
-    {"src": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/19.png", matched: false},
-    {"src": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/22.png", matched: false}
+    // {"src": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/19.png", matched: false},
+    // {"src": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/22.png", matched: false}
 ]
 
 const whosThatPokemonURL = 'https://images3.alphacoders.com/677/677583.png';
@@ -25,6 +26,9 @@ function App(){
     const [choiceOne, setChoiceOne] = useState(null)
     const [choiceTwo, setChoiceTwo] = useState(null)
     const [disabled, setDisabled] = useState(false)
+    //const [urls, setUrls] = useState([{}])
+    const [urls, setUrls] = useState()
+
 
     const shuffleCards = () => {
         const shuffledCards = [...cardImages, ...cardImages]
@@ -64,7 +68,6 @@ function App(){
         }
     },[choiceOne, choiceTwo])
 
-    console.log(cards)
 
     const resetTurn= () => {
         setChoiceOne(null)
@@ -73,10 +76,36 @@ function App(){
         setDisabled(false)
     }
 
-    useEffect(() =>{
-        shuffleCards()
+    // const array =[];
+    
+
+    useEffect(() => {
+        const fetchUrls = async () => {
+            const response = await axios.get("http://localhost:3000/api/sprites");
+            // console.log('console.log inside fetchUrls()')
+            //console.log(response.data)
+            for(let i = 0; i < cardImages.length; i++){
+                cardImages[i].src = response.data[i].src;
+            }
+            //console.log(cardImages)
+        }
+        fetchUrls()
+        // console.log('console.log after fetchUrls()')
+        // setTimeout(() => {
+        //     for(let i = 0; i < cardImages.length; i++){
+        //         cardImages[i].src = urls[i].src;
+        //     }
+        // }, 500)
+        setTimeout(() => shuffleCards(), 700)
     }, [])
 
+    //use this instead of the setTimeout above. This way you iliminate the delay
+    // useEffect(() => {
+    //     shuffleCards()
+    //     console.log("shuffled cards")
+    // }, [cardImages])
+
+     
     return (
         <div className='App'>
             <h1>Gotta Match 'Em All!</h1>

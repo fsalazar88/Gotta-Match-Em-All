@@ -50,8 +50,8 @@ module.exports = {
           publicPath: '/build',
           directory: path.resolve(__dirname, 'build')
         },
-        //compress: true,
-        //port: 8080,
+        compress: true,
+        port: 8080,
         proxy: {
             '/api': 'http://localhost:3000'
         }
