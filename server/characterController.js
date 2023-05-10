@@ -37,7 +37,7 @@ characterController.getCharacters = (req, res, next) => {
             res.locals.characters.push(obj);
             //console.log(res.locals.characters)
             if(res.locals.characters.length >=8){
-                console.log(res.locals.characters)
+                // console.log(res.locals.characters)
                 //fs.writeFile("database.txt", res.locals.characters);
                 
                 return next();
