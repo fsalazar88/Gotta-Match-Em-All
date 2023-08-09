@@ -1,9 +1,6 @@
-import React, { Component, useEffect, useState } from 'react';
-import ReactDOM from "react-dom";
-import SingleCard from './SingleCard.jsx';
-import '/components/App.css'
+import React, { useEffect, useState } from 'react';
+import SingleCard from './components/SingleCard.jsx';
 import axios from "axios"
-import '/components/SingleCard.jsx'
 
 const cardImages = [
     {"src": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png", matched: false},
@@ -15,9 +12,6 @@ const cardImages = [
     // {"src": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/19.png", matched: false},
     // {"src": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/22.png", matched: false}
 ]
-
-const whosThatPokemonURL = 'https://images3.alphacoders.com/677/677583.png';
-const testPokemonURL = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/35.png';
 
 
 function App(){
@@ -75,9 +69,6 @@ function App(){
         setTurns(prevTurns => prevTurns + 1)
         setDisabled(false)
     }
-
-    // const array =[];
-    
 
     useEffect(() => {
         const fetchUrls = async () => {

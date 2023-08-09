@@ -1,7 +1,4 @@
-import React, { Component, useState } from 'react';
-import ReactDOM from "react-dom";
-import '/components/App.css'
-
+import React from 'react';
 
 export default function SingleCard({card, handleChoice, flipped, disabled}){
 
