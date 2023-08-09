@@ -27,7 +27,7 @@ function App(){
     const [choiceTwo, setChoiceTwo] = useState(null)
     const [disabled, setDisabled] = useState(false)
     //const [urls, setUrls] = useState([{}])
-    const [urls, setUrls] = useState()
+    //const [urls, setUrls] = useState()
 
 
     const shuffleCards = () => {
