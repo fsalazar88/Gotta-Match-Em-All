@@ -2,6 +2,7 @@ import React from 'react';
 
 export default function SingleCard({card, handleChoice, flipped, disabled}){
 
+    //disables selected card upon user click
     const handleClick = () => {
         if(!disabled){
             handleChoice(card)

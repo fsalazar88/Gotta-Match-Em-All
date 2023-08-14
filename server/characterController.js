@@ -1,5 +1,7 @@
 const characterController = {};
 
+//middleware retrieves 8 unique images from pokemon API
+  //array containing images is saved to response
 characterController.getCharacters = async (req, res, next) => {
     let pokemonArray = [];
     res.locals.characters = [];

@@ -20,7 +20,7 @@ app.use((req, res, next) => {
 app.use(express.static(path.join(__dirname, '../dist'))); // NEW
 app.use(express.static(path.join(__dirname, '../client'))); // NEW
 
-
+//handle request to backend for new images
 app.get('/api/sprites',characterController.getCharacters, (req, res) => {
     return res.status(200).send(res.locals.characters);
   });
@@ -31,6 +31,18 @@ app.get('/', (req, res) => {
   res.status(200).sendFile(path.join(__dirname, '../dist', 'index.html')); // EDIT
 });
   
+//Global error handling middleware
+app.use((err, req, res, next) => {
+  const defaultErr = {
+      log: 'Express error handler caught unknown middlware error',
+      status: 400,
+      message: { err: 'Error occured' }
+  }; 
+  const errorObj = Object.assign({}, defaultErr, err);
+  console.log(errorObj.log);
+  return res.status(errorObj.status).json(errorObj.message);
+});
+
 
 // Start server
 app.listen(PORT, () => {
