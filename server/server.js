@@ -17,8 +17,8 @@ app.use((req, res, next) => {
 });
 
 // Serve static files
-app.use(express.static(path.join(__dirname, '../dist'))); // NEW
-app.use(express.static(path.join(__dirname, '../client'))); // NEW
+app.use(express.static(path.join(__dirname, '../dist')));
+app.use(express.static(path.join(__dirname, '../client')));
 
 //handle request to backend for new images
 app.get('/api/sprites',characterController.getCharacters, (req, res) => {

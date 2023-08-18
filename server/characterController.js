@@ -6,7 +6,7 @@ characterController.getCharacters = async (req, res, next) => {
     let pokemonArray = [];
     res.locals.characters = [];
 
-    while(pokemonArray.length < 8){
+    while(pokemonArray.length <= 8){
         let pokeNum = Math.floor(Math.random()*150 + 1);
         if(pokemonArray.includes(pokeNum)) {
           continue;
@@ -21,14 +21,13 @@ characterController.getCharacters = async (req, res, next) => {
           })
           .catch((err) => {
             return next({
-              log: 'characterController.getCharacters',
-              message: 'error during fetch request',
+              log: `characterController.getCharacters: ${err}`,
+              message: {error: 'error during fetch request'},
             })
           })
     }
     return next();
 
 }
-
 
 module.exports = characterController;

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import SingleCard from './components/SingleCard.jsx';
 import axios from "axios"
 
-//uncomment last two elements to convert game from 6 pairs of cards to 8
+
 const cardImages = [
     {"src": "", matched: false},
     {"src": "", matched: false},
@@ -10,8 +10,8 @@ const cardImages = [
     {"src": "", matched: false},
     {"src": "", matched: false},
     {"src": "", matched: false},
-    // {"src": "", matched: false},
-    // {"src": "", matched: false}
+    {"src": "", matched: false},
+    {"src": "", matched: false}
 ]
 
 
