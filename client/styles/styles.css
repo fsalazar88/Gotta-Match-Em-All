@@ -1,33 +1,54 @@
 .App {
     max-width: 1400px;
-    margin: 40px auto;
+    margin-left: auto;
+    margin-right:auto;
+    height: 100vh;
 }
 
 body{
+    font-family: "Gill Sans", sans-serif;
     margin: 0;
-    font-size: 1.5em;
     text-align: center;
-    background-image: url('../img/566522.jpg');
+    background: linear-gradient(to left top, #1b4965, #5fa8d3); 
+    /* background-image: url('../img/566522.jpg'); */
     color: azure;
 }
 
-button {
+#title {
+    font-size: xx-large;
+    text-decoration: underline;
+}
+
+#newGame {
     background: none;
     border: 2px solid whitesmoke;
     padding: 6px 12px;
     border-radius: 10px;
     color: whitesmoke;
     cursor: pointer;
-    font-size: 1em;
+    font-size: 1.2em;
+    transition: transform 0.2s;
 }
 
-button:hover {
-    background: red;
+#newGame:hover {
+    background: #1b4965;
     color: whitesmoke;
+}
+
+#newGame:active {
+    transform: scale(1.1);
+}
+
+#turns {
+    font-size: x-large;
 }
 
 .card-grid {
     margin-top: 40px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 40px;
+    padding-right: 40px;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-gap: 20px;
@@ -53,8 +74,40 @@ button:hover {
 
 .flipped .front {
     transform: rotateY(0deg);
-    margin-top: 30px;
-    margin-left: 10px;
-    width: 150px;
-    height:125px
+    margin-top: 10%;
+    margin-left: 3%;
+    width: 47%;
+    height: 67%;
+}
+
+.gameStats {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    column-gap: 20px;
+}
+
+
+@media (max-width: 1400px) {
+    
+    .card-grid {
+        margin-left: 40px;
+        margin-right: 40px;
+        padding: 0;
+    }
+}
+
+@media (max-width: 768px) {
+    
+    .card-grid {
+        grid-gap: 10px;
+        margin-left: 20px;
+        margin-right: 20px;
+        padding: 0;
+    }
+
+    .card img {
+        border: 2px solid whitesmoke;
+        border-radius: 12px
+    }
 }

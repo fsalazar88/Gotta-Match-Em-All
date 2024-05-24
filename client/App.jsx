@@ -14,7 +14,6 @@ const cardImages = [
     {"src": "", matched: false}
 ]
 
-
 function App(){
     const [cards, setCards] = useState([])
     const [turns, setTurns] = useState(0)
@@ -22,6 +21,18 @@ function App(){
     const [choiceTwo, setChoiceTwo] = useState(null)
     const [disabled, setDisabled] = useState(false)
 
+    //when page loads, a request is sent to retrieve new images from API
+        //when request completes, cards are shuffled
+        useEffect(() => {
+            const fetchUrls = async () => {
+                const response = await axios.get("http://localhost:3000/api/sprites");
+                for(let i = 0; i < cardImages.length; i++){
+                    cardImages[i].src = response.data[i].src;
+                }
+                shuffleCards();
+            }
+            fetchUrls()
+        }, [])
 
     //function shuffles cards and resets board
     const shuffleCards = () => {
@@ -74,24 +85,10 @@ function App(){
         setDisabled(false)
     }
 
-    //when page loads, a request is sent to retrieve new images from API
-        //when request completes, cards are shuffled
-    useEffect(() => {
-        const fetchUrls = async () => {
-            const response = await axios.get("http://localhost:3000/api/sprites");
-            for(let i = 0; i < cardImages.length; i++){
-                cardImages[i].src = response.data[i].src;
-            }
-            shuffleCards();
-        }
-        fetchUrls()
-    }, [])
-
-
     return (
         <div className='App'>
-            <h1>Gotta Match 'Em All!</h1>
-            <button onClick={shuffleCards}>New Game</button>
+            <h1 id='title' >Gotta Match 'Em All!</h1>
+            <button id='newGame' onClick={shuffleCards}>New Game</button>
             <div className='card-grid'>
                 {cards.map(card => (
                     <SingleCard
@@ -103,7 +100,11 @@ function App(){
                     />
                 ))}
             </div>
-            <p>Turns: {turns}</p>
+            <div className='gameStats'>
+                <p id='turns' >Turns: {turns}</p>
+                <p id='currentScore' >Current Score</p>
+                <p  id='highScore' >High Score</p>
+            </div>
         </div>
     )
     
