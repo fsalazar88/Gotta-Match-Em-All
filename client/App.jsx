@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import SingleCard from './components/SingleCard.jsx';
 import axios from "axios"
 
-
 const cardImages = [
     {"src": "", matched: false},
     {"src": "", matched: false},
@@ -14,12 +13,17 @@ const cardImages = [
     {"src": "", matched: false}
 ]
 
+let savedHighScore = localStorage.getItem('highScore');
+
 function App(){
     const [cards, setCards] = useState([])
     const [turns, setTurns] = useState(0)
     const [choiceOne, setChoiceOne] = useState(null)
     const [choiceTwo, setChoiceTwo] = useState(null)
     const [disabled, setDisabled] = useState(false)
+    const [matches, setMatches] = useState(0);
+    const [highScore, setHighScore] = useState(savedHighScore ? savedHighScore : 0)
+
 
     //when page loads, a request is sent to retrieve new images from API
         //when request completes, cards are shuffled
@@ -39,11 +43,11 @@ function App(){
         const shuffledCards = [...cardImages, ...cardImages]
           .sort(() => Math.random() - 0.5)
           .map((card) => ({...card, id: Math.random()}))
-        
         setCards(shuffledCards)
         setTurns(0)
         setChoiceOne(null)
         setChoiceTwo(null)
+        setMatches(0)
     }
 
     //upadted choice one and two states when user clicks on cards
@@ -56,6 +60,7 @@ function App(){
         if(choiceTwo && choiceOne){
             setDisabled(true)
             if(choiceOne.src === choiceTwo.src){
+                setMatches(matches => matches + 1)
                 setCards(prevCards => {
                     return prevCards.map(card => {
                         if(card.src === choiceOne.src){
@@ -67,7 +72,6 @@ function App(){
                     })
                 })
                 resetTurn()
-
             }
             else {
                 console.log('You chose two cards that DO NOT match')
@@ -75,6 +79,15 @@ function App(){
             }
         }
     },[choiceOne, choiceTwo])
+
+    useEffect(() => {
+        if(matches === 8){
+            if(turns < highScore){
+                localStorage.setItem('highScore', turns);
+                setHighScore(turns)
+            }
+        }
+    }, [matches])
 
     //function that resets user choices to null after two cards have been selected
         //turs state is incremented by one selected cards are turned back over
@@ -100,14 +113,13 @@ function App(){
                     />
                 ))}
             </div>
-            <div className='gameStats'>
-                <p id='turns' >Turns: {turns}</p>
-                <p id='currentScore' >Current Score</p>
-                <p  id='highScore' >High Score</p>
+            <div id='gameStats'>
+                <p id='currentScore' className='scores' >Current Score: {turns}</p>
+                <p id='scoreSeparator'></p>
+                <p id='bestScore' className='scores' >Best Score: {highScore}</p>
             </div>
         </div>
     )
-    
 }
 
 export default App;

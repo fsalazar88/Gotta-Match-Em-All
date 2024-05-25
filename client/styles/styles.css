@@ -9,9 +9,12 @@ body{
     font-family: "Gill Sans", sans-serif;
     margin: 0;
     text-align: center;
-    background: linear-gradient(to left top, #1b4965, #5fa8d3); 
+    background-color: #1b4965;
+    /* background: linear-gradient(to left top, #1b4965, #5fa8d3);  */
     /* background-image: url('../img/566522.jpg'); */
     color: azure;
+    height: 100vh;
+    overflow: hidden;
 }
 
 #title {
@@ -20,7 +23,7 @@ body{
 }
 
 #newGame {
-    background: none;
+    background: #5fa8d3;
     border: 2px solid whitesmoke;
     padding: 6px 12px;
     border-radius: 10px;
@@ -39,8 +42,18 @@ body{
     transform: scale(1.1);
 }
 
-#turns {
+.scores {
     font-size: x-large;
+}
+
+#scoreSeparator {
+    height: 30px;
+    width: 2px;
+    background-color: azure;
+}
+
+#bestScore {
+    color: goldenrod
 }
 
 .card-grid {
@@ -75,12 +88,12 @@ body{
 .flipped .front {
     transform: rotateY(0deg);
     margin-top: 10%;
-    margin-left: 3%;
+    margin-left: 5%;
     width: 47%;
     height: 67%;
 }
 
-.gameStats {
+#gameStats {
     display: flex;
     justify-content: center;
     align-items: center;
