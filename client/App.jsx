@@ -27,16 +27,16 @@ function App(){
 
     //when page loads, a request is sent to retrieve new images from API
         //when request completes, cards are shuffled
-        useEffect(() => {
-            const fetchUrls = async () => {
-                const response = await axios.get("http://localhost:3000/api/sprites");
-                for(let i = 0; i < cardImages.length; i++){
-                    cardImages[i].src = response.data[i].src;
-                }
-                shuffleCards();
+    useEffect(() => {
+        const fetchUrls = async () => {
+            const response = await axios.get("http://localhost:3000/api/sprites");
+            for(let i = 0; i < cardImages.length; i++){
+                cardImages[i].src = response.data[i].src;
             }
-            fetchUrls()
-        }, [])
+            shuffleCards();
+        }
+        fetchUrls()
+    }, [])
 
     //function shuffles cards and resets board
     const shuffleCards = () => {
