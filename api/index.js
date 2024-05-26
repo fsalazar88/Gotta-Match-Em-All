@@ -17,8 +17,11 @@ app.use((req, res, next) => {
 });
 
 // Serve static files
-app.use(express.static(path.join(__dirname, '../dist')));
-app.use(express.static(path.join(__dirname, '../client')));
+// app.use(express.static(path.join(__dirname, '../dist')));
+// app.use(express.static(path.join(__dirname, '../client')));
+app.get('/', (req, res) => {
+  return res.send('Server is running');
+});
 
 //handle request to backend for new images
 app.get('/api/sprites',characterController.getCharacters, (req, res) => {
