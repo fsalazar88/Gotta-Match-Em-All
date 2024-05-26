@@ -1,8 +1,5 @@
-.App {
-    max-width: 1400px;
-    margin-left: auto;
-    margin-right:auto;
-    height: 100vh;
+html {
+    height: 100%
 }
 
 body{
@@ -13,8 +10,14 @@ body{
     /* background: linear-gradient(to left top, #1b4965, #5fa8d3);  */
     /* background-image: url('../img/566522.jpg'); */
     color: azure;
-    height: 100vh;
-    overflow: hidden;
+    height: 100%;
+    overflow: auto;
+}
+
+.App {
+    max-width: 1400px;
+    margin-left: auto;
+    margin-right:auto;
 }
 
 #title {
