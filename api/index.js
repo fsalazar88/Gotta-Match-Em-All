@@ -17,19 +17,18 @@ app.use((req, res, next) => {
 });
 
 // Serve static files
-// app.use(express.static(path.join(__dirname, '../dist')));
-// app.use(express.static(path.join(__dirname, '../client')));
-app.get('/', (req, res) => {
-  return res.send('Server is running');
-});
+app.use(express.static(path.join(__dirname, '../dist')));
+app.use(express.static(path.join(__dirname, '../client')));
+// app.get('/', (req, res) => {
+//   return res.send('Server is running');
+// });
 
 //handle request to backend for new images
 app.get('/api/sprites',characterController.getCharacters, (req, res) => {
     return res.status(200).send(res.locals.characters);
   });
 
-
-// Serve app on the route '/'
+//Serve app on the route '/'
 app.get('/', (req, res) => {
   res.status(200).sendFile(path.join(__dirname, '../dist', 'index.html'));
 });
@@ -45,7 +44,6 @@ app.use((err, req, res, next) => {
   console.log(errorObj.log);
   return res.status(errorObj.status).json(errorObj.message);
 });
-
 
 // Start server
 app.listen(PORT, () => {

@@ -14,6 +14,7 @@ const cardImages = [
 ]
 
 let savedHighScore = localStorage.getItem('highScore');
+console.log('Retrieved High Score:', savedHighScore);
 
 function App(){
     const [cards, setCards] = useState([])
@@ -22,7 +23,7 @@ function App(){
     const [choiceTwo, setChoiceTwo] = useState(null)
     const [disabled, setDisabled] = useState(false)
     const [matches, setMatches] = useState(0);
-    const [highScore, setHighScore] = useState(savedHighScore ? savedHighScore : 0)
+    const [highScore, setHighScore] = useState(savedHighScore)
 
 
     //when page loads, a request is sent to retrieve new images from API
@@ -82,9 +83,11 @@ function App(){
 
     useEffect(() => {
         if(matches === 8){
-            if(turns < highScore){
+            if((turns < highScore && highScore) || !highScore){
                 localStorage.setItem('highScore', turns);
                 setHighScore(turns)
+            } else {
+                console.log('You did not set a new high score')
             }
         }
     }, [matches])
@@ -115,8 +118,12 @@ function App(){
             </div>
             <div id='gameStats'>
                 <p id='currentScore' className='scores' >Current Score: {turns}</p>
-                <p id='scoreSeparator'></p>
-                <p id='bestScore' className='scores' >Best Score: {highScore}</p>
+                {highScore &&
+                    <>
+                        <p id='scoreSeparator'></p>
+                        <p id='bestScore' className='scores' >Best Score: {highScore}</p>
+                    </>
+                }
             </div>
         </div>
     )
