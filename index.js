@@ -3,7 +3,7 @@ const app = express();
 const path = require('path');
 const PORT = process.env.PORT || 3000;
 
-const characterController = require('./characterController')
+const characterController = require('./api/characterController')
 
 //parse JSON from incoming requests
 app.use(express.json());
@@ -17,8 +17,8 @@ app.use((req, res, next) => {
 });
 
 // Serve static files
-app.use(express.static(path.join(__dirname, '../dist')));
-app.use(express.static(path.join(__dirname, '../client')));
+app.use(express.static(path.join(__dirname, '/public')));
+app.use(express.static(path.join(__dirname, '/client')));
 // app.get('/', (req, res) => {
 //   return res.send('Server is running');
 // });
@@ -30,7 +30,7 @@ app.get('/api/sprites',characterController.getCharacters, (req, res) => {
 
 //Serve app on the route '/'
 app.get('/', (req, res) => {
-  res.status(200).sendFile(path.join(__dirname, '../dist', 'index.html'));
+  res.status(200).sendFile(path.join(__dirname, '/public', 'index.html'));
 });
   
 //Global error handling middleware

@@ -9,7 +9,7 @@ const htmlPlugin = new HtmlWebPackPlugin({
 module.exports = {
   entry: "./client/index.js",
   output: {
-    path: path.join(__dirname, 'dist'),
+    path: path.join(__dirname, 'public'),
     filename: "bundle.js"
   },
   devtool: 'eval-source-map',
