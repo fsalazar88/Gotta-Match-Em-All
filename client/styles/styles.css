@@ -1,3 +1,4 @@
+/* Base styles for the entire document */
 html {
     height: 100%
 }
@@ -7,15 +8,15 @@ body{
     margin: 0;
     text-align: center;
     background-color: #1b4965;
-    color: azure;
+    color: whitesmoke;
     height: 100%;
     overflow: auto;
 }
 
+/* Container for the entire application */
 .App {
     max-width: 1400px;
-    margin-left: auto;
-    margin-right:auto;
+    margin: 0 auto;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -23,7 +24,8 @@ body{
 }
 
 #title {
-    font-size: xx-large;
+    font-size: 2.5rem;
+    /* font-size: xx-large; */
     text-decoration: underline;
     margin-top: 40px;
     margin-bottom: 0;
@@ -32,17 +34,20 @@ body{
 #newGame {
     background: #5fa8d3;
     border: 2px solid whitesmoke;
-    padding: 6px 12px;
+    color: whitesmoke;
+    padding: 10px 20px;
+    /* padding: 6px 12px; */
     border-radius: 10px;
     color: whitesmoke;
     cursor: pointer;
-    font-size: 1.2em;
-    transition: transform 0.2s;
+    font-size: 1.5em;
+    /* font-size: 1.2em; */
+    transition: transform 0.2s, background-color 0.2s;
+    /* transition: transform 0.2s; */
 }
 
 #newGame:hover {
     background: #1b4965;
-    color: whitesmoke;
 }
 
 #newGame:active {
@@ -50,7 +55,8 @@ body{
 }
 
 .scores {
-    font-size: x-large;
+    font-size: 1.5rem;
+    /* font-size: x-large; */
     display: inline-block;
 }
 
@@ -62,7 +68,7 @@ body{
 #scoreSeparator {
     height: 50px;
     width: 2px;
-    background-color: azure;
+    background-color: whitesmoke;
 }
 
 #bestScore {
@@ -95,6 +101,12 @@ body{
 
 .card {
     position: relative;
+    cursor: pointer; /* Added cursor pointer */
+    transition: transform 0.3s; /* Add transition for scale effect */
+}
+
+.card:hover {
+    transform: scale(1.02); /* Scale on hover */
 }
 
 .card img {
@@ -106,7 +118,7 @@ body{
 
 .card .front {
     transform: rotateY(90deg);
-    transition: all ease-in-out 0.1s;
+    transition: all ease-in-out 0.2s;
     position:absolute;
     border: 0px solid whitesmoke;
 }
@@ -150,7 +162,35 @@ body{
         margin-top: 0;
     }
 
-    .scores, #newGame {
-        font-size:medium;
+    #title {
+        font-size: 2rem;
     }
+
+    .scores, #newGame {
+        /* font-size:medium; */
+        font-size: 1rem; /* Adjusted font size for smaller screens */
+    }
+
+    #scoreSeparator {
+        height: 30px;
+    }
+    
+}
+
+
+@keyframes highlight {
+    0% {
+        color: goldenrod;
+    }
+    50% {
+        color: white;
+        text-shadow: 0 0 10px goldenrod, 0 0 20px goldenrod, 0 0 30px goldenrod;
+    }
+    100% {
+        color: goldenrod;
+    }
+}
+
+#bestScore.highlight {
+    animation: highlight 1.5s ease-in-out;
 }

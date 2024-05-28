@@ -2,6 +2,10 @@ import React, { useEffect, useState } from 'react';
 import SingleCard from './components/SingleCard.jsx';
 import axios from "axios"
 
+/**
+ * Initial state of card images.
+ * Each card has a 'src' for the image URL and a 'matched' boolean.
+ */
 const cardImages = [
     {"src": "", matched: false},
     {"src": "", matched: false},
@@ -13,6 +17,9 @@ const cardImages = [
     {"src": "", matched: false}
 ]
 
+/**
+ * Retrieve saved high score from local storage.
+ */
 let savedHighScore = localStorage.getItem('highScore');
 console.log('Retrieved High Score:', savedHighScore);
 
@@ -24,10 +31,12 @@ function App(){
     const [disabled, setDisabled] = useState(false)
     const [matches, setMatches] = useState(0);
     const [highScore, setHighScore] = useState(savedHighScore)
+    const [isHighlighted, setIsHighlighted] = useState(false);
 
-
-    //when page loads, a request is sent to retrieve new images from API
-        //when request completes, cards are shuffled
+    /**
+     * Fetch card images from the server on initial render.
+     * When the request completes, shuffle the cards.
+     */
     useEffect(() => {
         const fetchUrls = async () => {
             const response = await axios.get("api/sprites");
@@ -40,7 +49,9 @@ function App(){
         fetchUrls()
     }, [])
 
-    //function shuffles cards and resets board
+    /**
+     * Shuffle the cards and reset the game state.
+     */
     const shuffleCards = () => {
         const shuffledCards = [...cardImages, ...cardImages]
           .sort(() => Math.random() - 0.5)
@@ -52,12 +63,19 @@ function App(){
         setMatches(0)
     }
 
-    //upadted choice one and two states when user clicks on cards
+    /**
+     * Handle the user's card choice.
+     * Updates the state for either the first or second choice.
+     * @param {Object} card - The selected card object
+     */
     const handleChoice = (card) => {
         choiceOne ? setChoiceTwo(card) : setChoiceOne(card);
     }
 
-    //after user has selected two cards, check if cards match
+    /**
+     * Check if the two selected cards match.
+     * Updates the game state accordingly.
+     */
     useEffect(() => {
         if(choiceTwo && choiceOne){
             setDisabled(true)
@@ -82,19 +100,26 @@ function App(){
         }
     },[choiceOne, choiceTwo])
 
+    /**
+     * Update the high score if a new one is achieved.
+     * Highlights the high score temporarily.
+     */
     useEffect(() => {
         if(matches === 8){
             if((turns < highScore && highScore) || !highScore){
                 localStorage.setItem('highScore', turns);
                 setHighScore(turns)
+                setIsHighlighted(true);
+                setTimeout(() => setIsHighlighted(false), 1500); // Remove highlight after 1.5 seconds
             } else {
                 console.log('You did not set a new high score')
             }
         }
     }, [matches])
 
-    //function that resets user choices to null after two cards have been selected
-        //turs state is incremented by one selected cards are turned back over
+    /**
+     * Reset the turn state after two cards have been selected.
+     */
     const resetTurn= () => {
         setChoiceOne(null)
         setChoiceTwo(null)
@@ -122,7 +147,7 @@ function App(){
                 {highScore &&
                     <>
                         <span id='scoreSeparator' ></span>
-                        <span id='bestScore' className='scores' >Best Score: {highScore}</span>
+                        <span id='bestScore' className={`scores ${isHighlighted ? 'highlight' : ''}`} >Best Score: {highScore}</span>
                     </>
                 }
             </div>
