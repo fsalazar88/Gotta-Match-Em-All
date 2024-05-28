@@ -16,11 +16,17 @@ body{
     max-width: 1400px;
     margin-left: auto;
     margin-right:auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 40px;
 }
 
 #title {
     font-size: xx-large;
     text-decoration: underline;
+    margin-top: 40px;
+    margin-bottom: 0;
 }
 
 #newGame {
@@ -45,6 +51,12 @@ body{
 
 .scores {
     font-size: x-large;
+    display: inline-block;
+}
+
+#currentScore {
+    margin: 0;
+    padding: 0;
 }
 
 #scoreSeparator {
@@ -54,11 +66,23 @@ body{
 }
 
 #bestScore {
-    color: goldenrod
+    color: goldenrod;
+    margin: 0;
+    padding: 0;
+}
+
+#gameStats {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    column-gap: 40px;
+    margin-right: auto;
+    margin-left: calc(100%/2 - 176.08px - 40px + 1.5px); 
+    margin-top: 10px;
 }
 
 .card-grid {
-    margin-top: 40px;
+    align-self: center;
     margin-left: auto;
     margin-right: auto;
     padding-left: 40px;
@@ -94,14 +118,6 @@ body{
     width: 47%;
     height: 67%;
 }
-
-#gameStats {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    column-gap: 20px;
-}
-
 
 @media (max-width: 1400px) {
     

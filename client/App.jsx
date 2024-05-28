@@ -117,15 +117,16 @@ function App(){
                     />
                 ))}
             </div>
-            <div id='gameStats'>
-                <p id='currentScore' className='scores' >Current Score: {turns}</p>
+            <div id='gameStats' style={turns > 9 ? {marginLeft:"calc(100%/2 - 189.43px - 40px + 1.5px)"} : {}}>
+                <span id='currentScore' className='scores' >Current Score: {turns}</span>
                 {highScore &&
                     <>
-                        <p id='scoreSeparator'></p>
-                        <p id='bestScore' className='scores' >Best Score: {highScore}</p>
+                        <span id='scoreSeparator' ></span>
+                        <span id='bestScore' className='scores' >Best Score: {highScore}</span>
                     </>
                 }
             </div>
+            
         </div>
     )
 }
