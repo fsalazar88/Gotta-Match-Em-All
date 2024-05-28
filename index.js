@@ -13,19 +13,14 @@ app.use(express.json());
  * Allows requests from specified origin
  */
 app.use((req, res, next) => {
-  res.setHeader('Access-Control-Allow-Origin', 'https://gotta-match-em-all-full-stack-8hkp6hi73.vercel.app'); // Replace with your front-end origin if different
-  // res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000'); // Uncomment for local development
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST'); // Allow GET and POST methods
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type'); // Allow specific headers
   next();
 });
 
 // Serve static files
-app.use(express.static(path.join(__dirname, '/public')));
+app.use(express.static(path.join(__dirname, '/dist')));
 app.use(express.static(path.join(__dirname, '/client')));
-// app.get('/', (req, res) => {
-//   return res.send('Server is running');
-// });
 
 //handle request to backend for new images
 app.get('/api/sprites',characterController.getCharacters, (req, res) => {
@@ -34,7 +29,7 @@ app.get('/api/sprites',characterController.getCharacters, (req, res) => {
 
 //Serve app on the route '/'
 app.get('/', (req, res) => {
-  res.status(200).sendFile(path.join(__dirname, '/public', 'index.html'));
+  res.status(200).sendFile(path.join(__dirname, '/dist', 'index.html'));
 });
   
 //Global error handling middleware

@@ -114,9 +114,9 @@ body{
 @media (max-width: 768px) {
     
     .card-grid {
-        grid-gap: 10px;
-        margin-left: 20px;
-        margin-right: 20px;
+        grid-gap: 5px;
+        margin-left: 10px;
+        margin-right: 10px;
         padding: 0;
     }
 
