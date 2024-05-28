@@ -8,11 +8,15 @@ const characterController = require('./api/characterController')
 //parse JSON from incoming requests
 app.use(express.json());
 
-// deal with cors headers
+/**
+ * Middleware to set headers for CORS (Cross-Origin Resource Sharing)
+ * Allows requests from specified origin
+ */
 app.use((req, res, next) => {
-  res.append("Access-Control-Allow-Origin", ["*"]);
-  res.append("Access-Control-Allow-Methods", "GET,PUT,PATCH,POST,DELETE");
-  res.append("Access-Control-Allow-Headers", "Content-Type");
+  res.setHeader('Access-Control-Allow-Origin', 'https://gotta-match-em-all-full-stack-8hkp6hi73.vercel.app'); // Replace with your front-end origin if different
+  // res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000'); // Uncomment for local development
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST'); // Allow GET and POST methods
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type'); // Allow specific headers
   next();
 });
 
