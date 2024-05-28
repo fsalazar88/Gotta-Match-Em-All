@@ -117,7 +117,7 @@ function App(){
                     />
                 ))}
             </div>
-            <div id='gameStats' style={turns > 9 ? {marginLeft:"calc(100%/2 - 189.43px - 40px + 1.5px)"} : {}}>
+            <div id='gameStats' >
                 <span id='currentScore' className='scores' >Current Score: {turns}</span>
                 {highScore &&
                     <>

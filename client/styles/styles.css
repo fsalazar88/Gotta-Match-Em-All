@@ -57,6 +57,7 @@ body{
 #currentScore {
     margin: 0;
     padding: 0;
+    width: 200px;
 }
 
 #scoreSeparator {
@@ -69,6 +70,7 @@ body{
     color: goldenrod;
     margin: 0;
     padding: 0;
+    width: 200px;
 }
 
 #gameStats {
@@ -77,7 +79,7 @@ body{
     align-items: center;
     column-gap: 40px;
     margin-right: auto;
-    margin-left: calc(100%/2 - 176.08px - 40px + 1.5px); 
+    margin-left: auto; 
     margin-top: 10px;
 }
 
