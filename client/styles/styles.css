@@ -65,7 +65,8 @@ body{
     padding-right: 40px;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-gap: 20px;
+    row-gap: 15px;
+    column-gap: 19px;
 }
 
 .card {
@@ -105,6 +106,8 @@ body{
 @media (max-width: 1400px) {
     
     .card-grid {
+        row-gap: 10px;
+        column-gap: 14px;
         margin-left: 40px;
         margin-right: 40px;
         padding: 0;
@@ -114,9 +117,10 @@ body{
 @media (max-width: 768px) {
     
     .card-grid {
-        grid-gap: 5px;
-        margin-left: 10px;
-        margin-right: 10px;
+        row-gap: 5px;
+        column-gap: 9px;
+        margin-left: 8px;
+        margin-right: 8px;
         padding: 0;
     }
 

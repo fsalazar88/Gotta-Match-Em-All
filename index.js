@@ -13,6 +13,7 @@ app.use(express.json());
  * Allows requests from specified origin
  */
 app.use((req, res, next) => {
+  // res.setHeader('Access-Control-Allow-Origin', 'http://localhost:8080'); // Uncomment for local development
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST'); // Allow GET and POST methods
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type'); // Allow specific headers
   next();
