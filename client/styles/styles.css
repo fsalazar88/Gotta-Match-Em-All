@@ -144,4 +144,9 @@ body{
         border: 2px solid whitesmoke;
         border-radius: 12px
     }
+
+    #gameStats {
+        column-gap: 20px;
+        margin-top: 0;
+    }
 }
