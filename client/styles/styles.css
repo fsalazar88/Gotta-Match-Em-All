@@ -150,7 +150,7 @@ body{
         margin-top: 0;
     }
 
-    #scores, #newGame {
+    .scores, #newGame {
         font-size:medium;
     }
 }
