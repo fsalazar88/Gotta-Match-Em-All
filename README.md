@@ -1,6 +1,36 @@
 # Gotta Match 'Em All!
 
-Welcome to the "Gotta Match 'Em All!" memory card game, a fun and interactive game built using React.js and the Pokemon API. The goal of the game is to match all of the Pokemon cards.
+Gotta Match 'Em All! is a fun and interactive memory matching game built with React and Node.js. Players are presented with a grid of cards featuring Pokémon images, and the goal is to find all matching pairs in the fewest possible turns.
+
+**Visit the deployed website at https://gotta-match-em-all.vercel.app/ and see if you can achieve a new best score!**
+
+## Table of Contents
+
+1. [Features](#features)
+2. [Technologies Used](#technologies-used)
+3. [How to play](#how-to-play)
+4. [Installation](#installation)
+5. [Contributing](#contributing)
+6. [License](#license)
+
+## Features
+
+- Interactive memory matching game
+- Fetches Pokémon images from the Pokémon API
+- Keeps track of the number of turns
+- Saves and displays the best score
+- Animates new high scores
+- Responsive design for optimal viewing on various devices
+- Node.js/Express backend to handle fetching new images and serving the application
+
+## Technologies Used
+
+- React: Frontend library for building user interfaces
+- Node.js: JavaScript runtime for server-side development
+- Express: Web framework for Node.js to handle HTTP requests
+- Axios: Promise-based HTTP client for making API requests
+- CSS: Styling language for designing the user interface
+- Pokémon API: Provides data and images of Pokémon for the game
 
 ## How to play
 
@@ -10,21 +40,39 @@ Welcome to the "Gotta Match 'Em All!" memory card game, a fun and interactive ga
 4. If the two cards match, they will stay revealed. If they do not match, they will be flipped back over.
 5. The game ends when all of the cards have been matched.
 
-## Getting started
+## Installation
 
-1. Clone the repository to your local machine.
-2. Install the dependencies using `npm install`.
-3. Run the development server using `npm start`.
-4. Open a web browser and navigate to `localhost:3000`to play the game.
+### Prerequisites
 
-## Features
+- Node.js (v12 or higher)
+- npm (v6 or higher)
 
-* 8 unique Pokemon cards are randomly generated for each game.
-* The cards are shuffled and hidden at the start of each game.
-* The user can click on two cards to reveal them.
-* If the two cards match, they will stay revealed. If they do not match, they will be flipped back over.
-* The game ends when all of the cards have been matched.
+### Steps
 
+1. Clone the repository:
+
+    ```bash
+    git clone https://github.com/fsalazar88/Gotta-Match-em-all.git
+    cd gotta-match-em-all
+    ```
+
+2. Install dependencies:
+
+    ```bash
+    npm install
+    ```
+
+3. Build the project:
+
+    ```bash
+    npm run build
+    ```
+
+4. Start the server:
+
+    ```bash
+    npm start
+    ```
 
 ## Contributing
 
