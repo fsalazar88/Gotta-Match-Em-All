@@ -22,6 +22,7 @@ const cardImages = [
  */
 let savedHighScore = localStorage.getItem('highScore');
 console.log('Retrieved High Score:', savedHighScore);
+console.log('completedFirstGame:', localStorage.getItem("completedFirstGame"));
 
 function App(){
     const [cards, setCards] = useState([])
@@ -114,7 +115,7 @@ function App(){
             } else {
                 console.log('You did not set a new high score')
             }
-
+            
             // Check if this is the first time the user has completed the game; if yes, give them a special prize ;-)
             if(!localStorage.getItem("completedFirstGame")){
                 console.log("first completed game");
