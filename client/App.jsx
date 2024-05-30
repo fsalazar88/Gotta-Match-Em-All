@@ -117,7 +117,9 @@ function App(){
 
             // Check if this is the first time the user has completed the game; if yes, give them a special prize ;-)
             if(!localStorage.getItem("completedFirstGame")){
+                console.log("first completed game");
                 localStorage.setItem("completedFirstGame", "true")
+                console.log(`localStorage = ${localStorage}`)
                 setTimeout(() => {
                     window.location.href = "https://www.youtube.com/watch?v=dQw4w9WgXcQ";
                 }, 1500)
