@@ -114,6 +114,14 @@ function App(){
             } else {
                 console.log('You did not set a new high score')
             }
+
+            // Check if this is the first time the user has completed the game; if yes, give them a special prize ;-)
+            if(!localStorage.getItem("completedFirstGame")){
+                localStorage.setItem("completedFirstGame", "true")
+                setTimeout(() => {
+                    window.location.href = "https://www.youtube.com/watch?v=dQw4w9WgXcQ";
+                }, 1500)
+            }
         }
     }, [matches])
 
