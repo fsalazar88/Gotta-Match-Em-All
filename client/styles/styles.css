@@ -15,7 +15,7 @@ body{
 
 /* Container for the entire application */
 .App {
-    max-width: 700px;
+    max-width: 1400px;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
@@ -95,8 +95,8 @@ body{
     padding-right: 40px;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
-    row-gap: 7px;
-    column-gap: 11px;
+    row-gap: 9px;
+    column-gap: 13px;
 }
 
 .card {
@@ -106,7 +106,7 @@ body{
 }
 
 .card:hover {
-    transform: scale(1.05);
+    transform: scale(1.02);
 }
 
 .card img {
@@ -132,14 +132,32 @@ body{
 }
 
 /* Responsive design adjustments */
-@media (max-width: 1400px) {
+@media (max-width: 1600px) {
+
+    .App{
+        row-gap: 30px;
+    }
     
     .card-grid {
-        row-gap: 10px;
-        column-gap: 14px;
+        row-gap: 6px;
+        max-width: 700px;
+        column-gap: 10px;
         margin-left: 40px;
         margin-right: 40px;
         padding: 0;
+    }
+    .card:hover {
+        transform: scale(1.02);
+    }
+    #title {
+        font-size: 2rem;
+        margin-top: 30px;
+    }
+    #newGame {
+        font-size: 1.0em;
+    }
+    #gameStats {
+        margin-top: 0;
     }
 }
 
@@ -151,6 +169,10 @@ body{
         margin-left: 8px;
         margin-right: 8px;
         padding: 0;
+    }
+
+    #newGame:active {
+        transform: scale(1.01);
     }
 
     .card img {
