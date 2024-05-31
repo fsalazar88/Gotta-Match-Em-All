@@ -38,15 +38,16 @@ function App(){
      * Fetch card images from the server on initial render.
      * When the request completes, shuffle the cards.
      */
-    useEffect(() => {
-        const fetchUrls = async () => {
-            const response = await axios.get("api/sprites");
-            // const response = await axios.get("http://localhost:3000/api/sprites"); // Uncomment for local development
-            for(let i = 0; i < cardImages.length; i++){
-                cardImages[i].src = response.data[i].src;
-            }
-            shuffleCards();
+    const fetchUrls = async () => {
+        const response = await axios.get("api/sprites");
+        // const response = await axios.get("http://localhost:3000/api/sprites"); // Uncomment for local development
+        for(let i = 0; i < cardImages.length; i++){
+            cardImages[i].src = response.data[i].src;
         }
+        shuffleCards();
+    }
+    
+    useEffect(() => {
         fetchUrls()
     }, [])
 
@@ -122,7 +123,7 @@ function App(){
                 localStorage.setItem("completedFirstGame", "true")
                 console.log(`localStorage = ${localStorage}`)
                 setTimeout(() => {
-                    window.location.href = "https://www.youtube.com/watch?v=dQw4w9WgXcQ";
+                    window.open("https://www.youtube.com/watch?v=dQw4w9WgXcQ", "_blank");
                 }, 1500)
             }
         }
@@ -141,7 +142,7 @@ function App(){
     return (
         <div className='App'>
             <h1 id='title' >Gotta Match 'Em All!</h1>
-            <button id='newGame' onClick={shuffleCards}>New Game</button>
+            <button id='newGame' onClick={fetchUrls}>New Game</button>
             <div className='card-grid'>
                 {cards.map(card => (
                     <SingleCard
