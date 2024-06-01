@@ -39,8 +39,8 @@ function App(){
      * When the request completes, shuffle the cards.
      */
     const fetchUrls = async () => {
-        const response = await axios.get("api/sprites");
-        // const response = await axios.get("http://localhost:3000/api/sprites"); // Uncomment for local development
+        // const response = await axios.get("api/sprites");
+        const response = await axios.get("http://localhost:3000/api/sprites"); // Uncomment for local development
         for(let i = 0; i < cardImages.length; i++){
             cardImages[i].src = response.data[i].src;
         }

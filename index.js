@@ -14,7 +14,7 @@ app.use(express.json());
  * In production, commment out 'Access-Control-Allow-Origin'
  */
 app.use((req, res, next) => {
-  // res.setHeader('Access-Control-Allow-Origin', 'http://localhost:8080'); // Allow requests from local front-end. Uncomment for local development
+  res.setHeader('Access-Control-Allow-Origin', 'http://localhost:8080'); // Allow requests from local front-end. Uncomment for local development
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST'); // Allow GET and POST methods
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type'); // Allow specific headers
   next();
