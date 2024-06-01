@@ -13,6 +13,8 @@ Gotta Match 'Em All! is a fun and interactive memory matching game built with Re
 5. [Contributing](#contributing)
 6. [License](#license)
 
+![alt text](<Screenshot 2024-05-29 234259.png>)
+
 ## Features
 
 - Interactive memory matching game
