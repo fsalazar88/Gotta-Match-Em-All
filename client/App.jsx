@@ -42,7 +42,7 @@ function App(){
 
         try{
             const isProduction = process.env.NODE_ENV==='production';
-            const apiUrl = isProduction ? "" : "http://localhost:3000";
+            const apiUrl = isProduction ? "" : "http://localhost:3000"; // Dynamically set api URL based on the environment
     
             const response = await axios.get(`${apiUrl}/api/sprites`); 
             for(let i = 0; i < cardImages.length; i++){
