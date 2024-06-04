@@ -39,12 +39,20 @@ function App(){
      * When the request completes, shuffle the cards.
      */
     const fetchUrls = async () => {
-        // const response = await axios.get("api/sprites");
-        const response = await axios.get("http://localhost:3000/api/sprites"); // Uncomment for local development
-        for(let i = 0; i < cardImages.length; i++){
-            cardImages[i].src = response.data[i].src;
+
+        try{
+            const isProduction = process.env.NODE_ENV==='production';
+            const apiUrl = isProduction ? "" : "http://localhost:3000";
+    
+            const response = await axios.get(`${apiUrl}/api/sprites`); 
+            for(let i = 0; i < cardImages.length; i++){
+                cardImages[i].src = response.data[i].src;
+            }
+            shuffleCards();
+            
+        } catch (error) {
+            console.error('Error fetching Pokémon sprites:', error);
         }
-        shuffleCards();
     }
     
     useEffect(() => {
