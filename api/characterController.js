@@ -37,4 +37,6 @@ characterController.getCharacters = async (req, res, next) => {
     }
 };
 
+
+
 module.exports = characterController;
