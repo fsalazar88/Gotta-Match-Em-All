@@ -58,10 +58,6 @@ app.use((err, req, res, next) => {
 
 
 
-
-
-
-
 // Start the server on the specified port
 app.listen(PORT, () => {
   console.log(`Server listening on port: ${PORT}`);
