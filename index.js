@@ -8,7 +8,6 @@ const PORT = process.env.PORT || 3000;
 // Middleware to parse JSON from incoming requests
 app.use(express.json());
 
-
 /**
  * Middleware to set headers for CORS (Cross-Origin Resource Sharing).
  * This allows requests from the specified origin (http://localhost:8080).
@@ -55,10 +54,6 @@ app.use((err, req, res, next) => {
   console.log(errorObj.log);
   return res.status(errorObj.status).json(errorObj.message);
 });
-
-
-
-
 
 // Start the server on the specified port
 app.listen(PORT, () => {
