@@ -20,6 +20,8 @@ app.use((req, res, next) => {
   next();
 });
 
+
+
 // Middleware to serve static files from 'dist' and 'client' directories
 app.use(express.static(path.join(__dirname, '/dist')));
 app.use(express.static(path.join(__dirname, '/client')));
