@@ -40,11 +40,6 @@ app.get('/', (req, res) => {
   res.status(200).sendFile(path.join(__dirname, '/dist', 'index.html'));
 });
 
-
-
-
-
-
 /**
  * Global error handling middleware.
  * Catches and handles errors throughout the application.
